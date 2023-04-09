@@ -21,9 +21,19 @@ public class Menu {
             System.out.print("Elige un opción: ");
             Scanner entrada = new Scanner(System.in);
             String opcion=entrada.next();
-
+            Utils.comprobarEntrada("1","5",opcion);
             switch (opcion){
                 case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    salir=true;
+                    break;
             }
 
         }while(!salir);

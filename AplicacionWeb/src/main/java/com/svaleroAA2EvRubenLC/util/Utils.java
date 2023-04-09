@@ -9,7 +9,7 @@ public class Utils {
             Scanner entrada= new Scanner(System.in);
             System.out.println("No es una opción valida.");
             System.out.println(" ");
-            System.out.println("Introduce un número del "+nuMenor+" al "+nuMayor);
+            System.out.print("Las opciones validas solo comprender valores entre el "+nuMenor+" y el "+nuMayor+": ");
             opcion=entrada.next();
         }
     }
