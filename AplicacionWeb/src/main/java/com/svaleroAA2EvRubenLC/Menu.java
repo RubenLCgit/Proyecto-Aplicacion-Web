@@ -1,11 +1,22 @@
 package com.svaleroAA2EvRubenLC;
 
+import com.svaleroAA2EvRubenLC.dao.Database;
 import com.svaleroAA2EvRubenLC.util.Utils;
 
+import java.sql.Connection;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
+    private Scanner entrada;
+    private Database database;
+    private Connection conexion;
+    public Menu(){
+        entrada = new Scanner(System.in);
+        database = new Database();
+        conexion = database.conectar();
+
+    }
     public void mostrarMenuJuegos(){
         boolean salir = false;
 
@@ -20,10 +31,16 @@ public class Menu {
             System.out.println("\n");
             System.out.print("Elige un opción: ");
             Scanner entrada = new Scanner(System.in);
-            String opcion=entrada.next();
-            Utils.comprobarEntrada("1","5",opcion);
-            switch (opcion){
+            switch (Utils.comprobarEntrada(entrada.next(),1,5)){
                 case "1":
+                    System.out.print("Nombre del juego: ");
+                    String nombre = entrada.next();
+                    System.out.print("Número máximo de jugadores: ");
+                    int max_jug = Integer.parseInt(Utils.comprobarEntrada(entrada.next(),1,20));
+                    System.out.print("Tipo de juego: ");
+                    String tipo = entrada.next();
+                    System.out.print("Duración máxima del juego (minutos): ");
+                    int duracion_max = Integer.parseInt(Utils.comprobarEntrada(entrada.next(),1,5000));
                     break;
                 case "2":
                     break;
@@ -33,7 +50,10 @@ public class Menu {
                     break;
                 case "5":
                     salir=true;
+                    database.cerrarConexion();
                     break;
+                default:
+                    System.out.println("Opción no valida. Vuelve a intentarlo:");
             }
 
         }while(!salir);

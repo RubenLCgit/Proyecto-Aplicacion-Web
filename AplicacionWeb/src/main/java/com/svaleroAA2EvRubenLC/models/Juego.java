@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor // Crea un constructor con todos los atributos.
 @NoArgsConstructor // Crea un constructor vacío o por defecto.
 public class Juego {
-    private String id_juego_pk;
+    private String id_jue_pk;
     private String nombre;
-    private int max_jugadores;
+    private int max_jug;
     private String tipo;
-    private int duracion_min;
+    private int duracion_max;
 }

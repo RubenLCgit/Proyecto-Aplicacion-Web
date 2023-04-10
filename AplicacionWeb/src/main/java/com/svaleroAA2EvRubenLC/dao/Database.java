@@ -7,10 +7,12 @@ import java.sql.SQLException;
 
 public class Database {
     private Connection conexion;
+
+
     public Connection conectar(){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:SID","Alumno","1234");
+            conexion = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe","ALUMNO","1234");
             System.out.println("Conexión realizada");
         }catch (ClassNotFoundException ex) {
             ex.printStackTrace();
@@ -24,7 +26,7 @@ public class Database {
     public void cerrarConexion(){
         try{
             conexion.close();
-            System.out.println("Dexconexión realizada");
+            System.out.println("Desconexión realizada");
         }catch (SQLException sqle) {
             sqle.printStackTrace();
             System.out.println("Fallo en la desconexión");
