@@ -13,23 +13,23 @@ public class Database {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conexion = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe","ALUMNO","1234");
-            System.out.println("Conexión realizada");
+            System.out.println("Conexión realizada\n");
         }catch (ClassNotFoundException ex) {
             ex.printStackTrace();
-            System.out.println("Driver no encontrado");
+            System.out.println("Driver no encontrado\n");
         }catch (SQLException ex2){
             ex2.printStackTrace();
-            System.out.println("Fallo de Conexión");
+            System.out.println("Fallo de Conexión\n");
         }
         return conexion;
     }
     public void cerrarConexion(){
         try{
             conexion.close();
-            System.out.println("Desconexión realizada");
+            System.out.println("Desconexión realizada\n");
         }catch (SQLException sqle) {
             sqle.printStackTrace();
-            System.out.println("Fallo en la desconexión");
+            System.out.println("Fallo en la desconexión\n");
         }
     }
 }

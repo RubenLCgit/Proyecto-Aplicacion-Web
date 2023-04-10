@@ -1,6 +1,7 @@
 package com.svaleroAA2EvRubenLC;
 
 import com.svaleroAA2EvRubenLC.dao.Database;
+import com.svaleroAA2EvRubenLC.models.Juego;
 import com.svaleroAA2EvRubenLC.util.Utils;
 
 import java.sql.Connection;
@@ -41,6 +42,7 @@ public class Menu {
                     String tipo = entrada.next();
                     System.out.print("Duración máxima del juego (minutos): ");
                     int duracion_max = Integer.parseInt(Utils.comprobarEntrada(entrada.next(),1,5000));
+                    Juego juego = new Juego("Caverna",7,"Eurogame",300);
                     break;
                 case "2":
                     break;
