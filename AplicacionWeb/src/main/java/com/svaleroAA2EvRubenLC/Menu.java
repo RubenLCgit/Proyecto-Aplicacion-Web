@@ -43,6 +43,7 @@ public class Menu {
                 case "3":
                     break;
                 case "4":
+                    menuBorrarJuego();
                     break;
                 case "5":
                     salir=true;
@@ -70,6 +71,19 @@ public class Menu {
         try {
             juegoDAO.registrarJuego(juego);//Capturamos aqui la excepcion lanzada por el metodo registrarJuego. Tambien podriamos volver a lanzarla a otra clase superior donde se use el metodo menuRegistrarJuego y asi sucesivamente hasta que la capturemos.
             System.out.println("Juego registrado correctamente");
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+            System.out.println("Fallo de Conexión con la base de datos");
+        }
+    }
+
+    private void menuBorrarJuego(){
+        System.out.print("Nombre del juego a borrar: ");
+        String nombre = entrada.next();
+        JuegoDAO juegoDAO = new JuegoDAO(conexion);
+        try {
+            juegoDAO.borrarJuego(nombre);//Capturamos aqui la excepcion lanzada por el metodo registrarJuego. Tambien podriamos volver a lanzarla a otra clase superior donde se use el metodo menuRegistrarJuego y asi sucesivamente hasta que la capturemos.
+            System.out.println("Juego borrado correctamente");
         }catch (SQLException sqle){
             sqle.printStackTrace();
             System.out.println("Fallo de Conexión con la base de datos");

@@ -5,9 +5,11 @@ import com.svaleroAA2EvRubenLC.models.Juego;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class JuegoDAO {
     private Connection conexion; //Cualquier calse que utilice en sus metodo la conexión a la base de datos necesitará un atributo de tipo "Connection".
+    Scanner entrada=new Scanner(System.in);
 
     public JuegoDAO(Connection conexion){
         this.conexion=conexion;
@@ -22,4 +24,12 @@ public class JuegoDAO {
         statement.setString(4,juego.getTipo());
         statement.executeUpdate();//executeQuery : para selects // executeUpdate() : para el resto de sentencias
     }
+
+    public void borrarJuego(String nombre) throws SQLException {
+        String sql = "DELETE FROM JUEGOS WHERE NOMBRE= ?";
+        PreparedStatement statement = conexion.prepareStatement(sql);
+        statement.setString(1,nombre);
+        statement.executeUpdate();
+    }
+
 }
