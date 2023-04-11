@@ -12,7 +12,7 @@ public class Database {
     public Connection conectar(){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conexion = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe","ALUMNO","1234");
+            conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","Alumno","1234");
             System.out.println("Conexión realizada\n");
         }catch (ClassNotFoundException ex) {
             ex.printStackTrace();
