@@ -58,6 +58,15 @@ public class JuegoDAO {
         statement.executeUpdate();
     }
 
+
+    public boolean existeJuego(String nomJuego) throws SQLException {
+        String sql = "SELECT ID_JUEGO FROM JUEGOS WHERE NOMBRE= ?";
+        PreparedStatement statement = conexion.prepareStatement(sql);
+        statement.setString(1, nomJuego);
+        ResultSet result = statement.executeQuery();
+        return result.next();
+    }
+
     private List<Juego> buscarJuegos(PreparedStatement statement) throws SQLException {
         ResultSet resulset = statement.executeQuery();// Resulset contiene un cursor de una base de datos. Variable u objeto que en base de datos almacena más de un valor.
         List<Juego>listaJuegos=new ArrayList<Juego>();
@@ -71,14 +80,6 @@ public class JuegoDAO {
             listaJuegos.add(juego);
         }
         return listaJuegos;
-    }
-
-    public boolean existeJuego(String nomJuego) throws SQLException {
-        String sql = "SELECT ID_JUEGO FROM JUEGOS WHERE NOMBRE= ?";
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1, nomJuego);
-        ResultSet result = statement.executeQuery();
-        return result.next();
     }
 
 }

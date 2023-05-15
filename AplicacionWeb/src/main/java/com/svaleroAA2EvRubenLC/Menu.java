@@ -66,13 +66,13 @@ public class Menu {
 
     private void menuRegistrarJuego(){
         System.out.print("Nombre del juego: ");
-        String nombre = entrada.next();
+        String nombre = entrada.nextLine();
         System.out.print("Número máximo de jugadores: ");
-        int max_jug = Integer.parseInt(Utils.comprobarEntrada(entrada.next(),1,20));
+        int max_jug = Integer.parseInt(entrada.nextLine());
         System.out.print("Tipo de juego: ");
-        String tipo = entrada.next();
+        String tipo = entrada.nextLine();
         System.out.print("Duración máxima del juego (minutos): ");
-        int duracion_max = Integer.parseInt(Utils.comprobarEntrada(entrada.next(),1,5000));
+        int duracion_max = Integer.parseInt(entrada.nextLine());
         Juego juego = new Juego(nombre, max_jug,tipo,duracion_max);
         JuegoDAO juegoDAO = new JuegoDAO(conexion);
         try {
@@ -85,7 +85,7 @@ public class Menu {
 
     private void menuBorrarJuego(){
         System.out.print("Nombre del juego a borrar: ");
-        String nombre = entrada.next();
+        String nombre = entrada.nextLine();
         JuegoDAO juegoDAO = new JuegoDAO(conexion);
         try {//Capturamos aqui la excepcion lanzada por el metodo registrarJuego. Tambien podriamos volver a lanzarla a otra clase superior donde se use el metodo menuRegistrarJuego y asi sucesivamente hasta que la capturemos.
             if (!juegoDAO.existeJuego(nombre))System.out.println("El juego no esta registrado");
